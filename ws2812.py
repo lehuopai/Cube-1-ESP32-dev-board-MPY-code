@@ -1,12 +1,21 @@
-import neopixel
-import machine
+from machine import Pin
+import neopixel,time
 
-pin = machine.Pin(5, machine.Pin.OUT)
+pin = Pin(5,Pin.OUT)
+np = neopixel.NeoPixel(pin,n=1,bpp=3,timing=1)
 
-n = neopixel.NeoPixel(pin, 1)
 
-n[0] = (127, 0, 0)
+def main():
 
-n.write()
-
-#https://vimsky.com/examples/detail/python-method-neopixel.NeoPixel.html
+    
+    while True:
+        
+        np.fill((255,255,255))
+        np.write()
+        time.sleep(0.5)
+        np.fill((0,0,0))
+        np.write()
+        time.sleep(0.5)
+        
+if __name__ == "__main__":
+    main()
